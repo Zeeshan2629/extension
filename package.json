@@ -1,0 +1,43 @@
+{
+"name": "code-flow-doc-gen",
+"displayName": "code-flow-doc-gen",
+"description": "Generate flowcharts and documentation from Python code using AI and visual parsing tools. Automate code analysis and visualization directly within VS Code.",
+"version": "0.0.1",
+"engines": {
+"vscode": "^1.100.0"
+},
+"categories": [
+"Other"
+],
+"activationEvents": [
+"onCommand:code-flow-doc-gen.generateFlowchart",
+"onCommand:code-flow-doc-gen.generateDoc"
+],
+"main": "./extension.js",
+"contributes": {
+"commands": [
+{
+"command": "code-flow-doc-gen.generateFlowchart",
+"title": "Generate Flowchart from Python Code"
+},
+{
+"command": "code-flow-doc-gen.generateDoc",
+"title": "Generate Documentation from Python Code"
+}
+]
+},
+"scripts": {
+"lint": "eslint .",
+"pretest": "npm run lint",
+"test": "vscode-test"
+},
+"devDependencies": {
+"@types/vscode": "^1.100.0",
+"@types/mocha": "^10.0.10",
+"@types/node": "20.x",
+"eslint": "^9.25.1",
+"@vscode/test-cli": "^0.0.10",
+"@vscode/test-electron": "^2.5.2"
+}
+}
+
