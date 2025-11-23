@@ -113,9 +113,6 @@ source venv/bin/activate # Linux/Mac
 
 ### 2️⃣ Install Requirements
 
-```bash
-pip install -r requirements.txt
-```
 
 ### 3️⃣ Run the Chatbot App
 
