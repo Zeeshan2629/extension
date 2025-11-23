@@ -9,7 +9,7 @@ This suite combines **Code Analysis**, **Flowchart Generation**, **Documentation
 
 # 🚀 1. AutoDoc Code Analyzer
 
-### (VS Code / Chrome Extension Compatible Backend)
+### (VS Code Extension Compatible Backend)
 
 A powerful backend engine that provides:
 
