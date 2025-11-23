@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>🤖 AutoDoc Chatbot</title>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    <!-- 🌗 Top Navigation -->
+    <button class="hamburger" id="hamburger">☰</button>
+    <a href="{{ url_for('logout') }}" class="logout-btn">🚪 Logout</a>
+    <div class="theme-toggle">
+      <button id="themeToggle">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+
+    <!-- 🩵 Sidebar + App Layout -->
+    <div class="main-layout">
+      <!-- 📂 Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <h2>Your Files</h2>
+        <ul id="fileList">
+          <li class="no-files">No files yet</li>
+        </ul>
+      </aside>
+
+      <!-- 💬 Chat Interface -->
+      <div class="app-container">
+        <header class="header">
+          <h1>🤖 AutoDoc Chatbot</h1>
+          <p>Upload a PDF and chat with your document intelligently.</p>
+        </header>
+
+        <main class="main">
+          <!-- 📁 Upload Section -->
+          <section class="upload-box">
+            <form id="uploadForm" enctype="multipart/form-data">
+              <input type="file" name="file" id="fileInput" accept=".pdf" />
+              <button type="submit" class="upload-btn">
+                📤 Upload & Index
+              </button>
+            </form>
+            <div id="uploadResponse" class="response-box"></div>
+          </section>
+
+          <!-- 🧠 Chat Section -->
+          <section id="chatArea" class="chat-section" style="display:none;">
+            <h3>Chatting with: <span id="currentFile"></span></h3>
+            <div id="chatLog" class="chat-log"></div>
+
+            <div class="chat-input-area">
+              <input
+                id="questionInput"
+                class="chat-input"
+                placeholder="Ask a question about the document..."
+                autocomplete="off"
+              />
+              <button id="askBtn" class="send-btn">➤</button>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Overlay for sidebar -->
+    <div id="overlay"></div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

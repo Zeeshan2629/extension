@@ -14,7 +14,7 @@ if not os.path.exists(input_file):
     print(f" Error: '{input_file}' not found.")
     sys.exit(1)
 
-# 🔧 Pass input_file properly to the flowchart generator
+
 if mode == "flowchart":
     flow_main(input_file)
 elif mode == "doc":
