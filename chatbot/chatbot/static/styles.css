@@ -1,0 +1,521 @@
+/* ensure the sidebar is hidden on mobile by default and visible when .visible */
+.sidebar { transform: translateX(-270px); transition: transform 0.35s ease-in-out; }
+.sidebar.visible { transform: translateX(0) !important; }
+
+/* overlay show/hide */
+#overlay { opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+#overlay.show { opacity: 1; pointer-events: all; }
+
+/* hamburger high z-index so it stays clickable */
+.hamburger { z-index: 1100 !important; }
+
+/* 🌌 GENERAL PAGE LAYOUT */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #101223, #1a1f36);
+  color: #fff;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* 🌐 APP CONTAINER — GLASS EFFECT */
+.app-container {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+  padding: 40px 50px;
+  width: 100%;
+  max-width: 900px;
+  min-width: 340px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ===========================
+   🌟 HEADER
+=========================== */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.3rem;
+  background: linear-gradient(90deg, #3a8ef6, #7b2ff7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  text-shadow: 0 0 12px rgba(58, 142, 246, 0.4);
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===========================
+   📁 UPLOAD SECTION
+=========================== */
+.upload-box {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+input[type="file"] {
+  width: 100%;
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.upload-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #3a8ef6, #0056d2);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+.upload-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px #3a8ef6;
+}
+
+/* ===========================
+   🧠 CHAT SECTION
+=========================== */
+.chat-section {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 20px 25px;
+  border-radius: 18px;
+}
+
+.chat-section h3 {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.chat-log {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  height: 380px;
+  overflow-y: auto;
+  font-size: 1rem;
+  scroll-behavior: smooth;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-log::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-log::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.chat-message {
+  margin: 10px 0;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeIn 0.3s forwards ease;
+}
+.chat-message.you .bubble {
+  background: linear-gradient(145deg, #3a8ef6, #0056d2);
+  color: #fff;
+  margin-left: auto;
+}
+.chat-message.assistant .bubble {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f1f1f1;
+  margin-right: auto;
+}
+
+.bubble {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 16px;
+  max-width: 85%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+}
+
+/* ===========================
+   ✍️ CHAT INPUT AREA
+=========================== */
+.chat-input-area {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  outline: none;
+  font-size: 0.95rem;
+}
+.send-btn {
+  background: linear-gradient(135deg, #3a8ef6, #0056d2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #3a8ef6;
+}
+
+/* ===========================
+   🌗 THEME TOGGLE
+=========================== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1003;
+}
+.theme-toggle button {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.theme-toggle button:hover {
+  transform: scale(1.07);
+}
+
+/* 🌞 SPIN ANIMATION */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.theme-toggle button.spin {
+  animation: spin 0.5s ease-in-out;
+}
+
+/* ===========================
+   ☀️ LIGHT MODE
+=========================== */
+body.light-mode {
+  background: linear-gradient(135deg, #f6f7fb, #e8ebf2);
+  color: #222;
+}
+body.light-mode .app-container {
+  background: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+body.light-mode .chat-log {
+  background: #fff;
+  color: #111;
+}
+
+/* ===========================
+   🧭 SIDEBAR & HAMBURGER
+=========================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  padding: 70px 18px 25px;
+  transform: translateX(-270px);
+  transition: transform 0.35s ease-in-out;
+  z-index: 999;
+}
+.sidebar.visible {
+  transform: translateX(0);
+}
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #3a8ef6;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar li {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #eaeaea;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sidebar li:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+.sidebar li.active {
+  background: linear-gradient(135deg, #3a8ef6, #7b2ff7);
+  color: #fff;
+}
+
+/* 🍔 HAMBURGER BUTTON */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+.hamburger:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 🚪 LOGOUT BUTTON */
+.logout-btn {
+  position: fixed;
+  top: 20px;
+  left: 75px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s ease;
+}
+.logout-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 65, 108, 0.5);
+}
+
+/* 🌫️ OVERLAY */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 998;
+}
+#overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Desktop: Sidebar always visible */
+@media (min-width: 901px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+  #overlay {
+    display: none;
+  }
+}
+
+/* ===========================
+   🔐 LOGIN / REGISTER PAGES
+=========================== */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #101223, #1a1f36);
+}
+.auth-box {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 40px 50px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+}
+.auth-box h1 {
+  font-size: 2rem;
+  background: linear-gradient(90deg, #3a8ef6, #7b2ff7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+.auth-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #3a8ef6, #0056d2);
+  color: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.auth-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #3a8ef6;
+}
+.switch-link {
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+.switch-link a {
+  color: #3a8ef6;
+  text-decoration: none;
+  font-weight: 500;
+}
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+/* 🌞 LIGHT MODE FOR AUTH */
+body.light-mode .auth-container {
+  background: linear-gradient(135deg, #f6f7fb, #e8ebf2);
+}
+body.light-mode .auth-box {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f1f1f;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+body.light-mode .auth-form input {
+  background: #f2f4f8;
+  color: #222;
+}
+/* 🧩 FIX SIDEBAR PARTIAL VISIBILITY */
+.sidebar {
+  left: -270px; /* start completely off-screen */
+  transform: none; /* we'll handle motion purely by transition */
+  transition: left 0.4s ease-in-out;
+}
+
+.sidebar.visible {
+  left: 0; /* slide fully in view */
+}
+/* 🌞 FIX — Sidebar Text Visibility in Light Mode */
+body.light-mode .sidebar {
+  background: rgba(255, 255, 255, 0.9);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .sidebar h2 {
+  color: #0056d2; /* deep blue heading */
+}
+
+body.light-mode .sidebar li {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a1a1a; /* readable dark text */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .sidebar li:hover {
+  background: rgba(0, 86, 210, 0.08);
+  color: #000;
+}
+
+body.light-mode .sidebar li.active {
+  background: linear-gradient(135deg, #3a8ef6, #0056d2);
+  color: #fff; /* ensure active item pops */
+}
+/* 🌞 FIX — Light Mode Chat Message Visibility */
+body.light-mode .chat-section {
+  background: #f9fafc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .chat-log {
+  background: #ffffff;
+  color: #1a1a1a;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+/* User bubbles */
+body.light-mode .chat-message.you .bubble {
+  background: linear-gradient(145deg, #3a8ef6, #0056d2);
+  color: #ffffff;
+}
+
+/* Assistant bubbles */
+body.light-mode .chat-message.assistant .bubble {
+  background: #edf1f8;
+  color: #111; /* readable dark text */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .bubble strong {
+  color: #000; /* label "You:" or "Assistant:" clearly visible */
+}
+
+/* Input box and send button visibility fix */
+body.light-mode .chat-input {
+  background: #f2f4f8;
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .send-btn {
+  background: linear-gradient(135deg, #3a8ef6, #0056d2);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 86, 210, 0.25);
+}
