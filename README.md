@@ -1,65 +1,168 @@
-# code-flow-doc-gen README
+# AutoDoc AI Suite
 
-This is the README for your extension "code-flow-doc-gen". After writing up a brief description, we recommend including the following sections.
+### Developed by **Zeeshan Shaikh — MIT ADT University**
 
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+A unified AI-powered suite designed to help developers **understand code**, **visualize logic**, and **interact with documents intelligently**.
+This suite combines **Code Analysis**, **Flowchart Generation**, **Documentation Generation**, and a **full PDF RAG Chatbot** into one cohesive system.
 
 ---
 
-## Working with Markdown
+# 🚀 1. AutoDoc Code Analyzer
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+### (VS Code / Chrome Extension Compatible Backend)
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+A powerful backend engine that provides:
 
-## For more information
+### ✅ Flowchart Generation (PNG)
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+* Converts Python code → AST → Pseudocode → Flowchart
+* Supports:
 
-**Enjoy!**
+  * Conditionals
+  * Loops
+  * Functions
+  * IO operations
+  * Nested structures
+* Rendered cleanly using Pillow (PIL)
+
+### ✅ Documentation Generation (PDF)
+
+* Analyzes Python source code
+* Generates:
+
+  * High-level summaries
+  * Logic breakdown
+  * Variable/Function explanations
+  * Error identification
+  * Optimization suggestions
+* Output saved as a **professional PDF**
+
+### Core Engine Components
+
+* Python-to-pseudocode conversion
+* Layout engine with binary tree logic
+* Flowchart rendering engine
+* PDF writer with structured document output
+* CLI runner for easy usage
+
+---
+
+# 🤖 2. AutoDoc PDF Chatbot
+
+### (Flask RAG Application)
+
+A fully functional, modern PDF chatbot powered by a retrieval-based architecture.
+
+### ✨ Features
+
+* Upload & index PDFs
+* Extract text automatically
+* Chunk & embed documents
+* Perform similarity search
+* Chat with your documents
+* Provide citations from source PDF
+* Login/Register system
+* Chat history saved per user per file
+* Light/Dark theme
+* Beautiful animated UI
+* Sliding sidebar (mobile-friendly)
+
+### Technical Pipeline
+
+1. PDF → Text extraction
+2. Text → Chunks
+3. Chunks → Embeddings
+4. Embeddings → Vector Store
+5. Query → Similarity Search
+6. Relevant Context → Response
+7. Store chat history in database
+
+### Storage
+
+* SQLite database (`chatbot.db`)
+* Contains:
+
+  * `User` accounts
+  * `ChatMessage` entries
+
+---
+
+# 🔗 3. Integrated AutoDoc Suite
+
+Both systems complement each other, forming a **complete developer productivity ecosystem**.
+
+| Component               | Purpose                                         |
+| ----------------------- | ----------------------------------------------- |
+| Code Analyzer           | Understand & visualize Python code              |
+| Documentation Generator | Produce professional explanation PDFs           |
+| PDF Chatbot             | Interact with documents through natural queries |
+
+The suite is designed to evolve into a fully automated documentation + analysis platform.
+
+---
+
+# 🛠 Installation & Usage
+
+### 1️⃣ Create Virtual Environment
+
+```bash
+python -m venv venv
+venv\Scripts\activate    # Windows
+source venv/bin/activate # Linux/Mac
+```
+
+### 2️⃣ Install Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Run the Chatbot App
+
+```bash
+python chatbot/app.py
+```
+
+Open in browser:
+
+```
+http://127.0.0.1:5000/
+```
+
+### 4️⃣ Generate Flowcharts
+
+```bash
+python flowchart_generator/run.py flowchart yourfile.py
+```
+
+### 5️⃣ Generate Documentation
+
+```bash
+python flowchart_generator/run.py doc yourfile.py
+```
+
+---
+
+# 🌟 Future Enhancements
+
+* Multi-PDF knowledge graphs
+* AI-powered code reviewer
+* Auto test-case generator
+* Multi-file flowchart stitching
+* GitHub integration
+* Cloud vector storage
+* ER diagram + architecture generator
+
+---
+
+# 🏆 Author
+
+**Zeeshan Shaikh**
+MIT ADT University
+
+
+---
+
+
+✅ A **Release Version**
+Just tell me!
