@@ -164,5 +164,3 @@ MIT ADT University
 ---
 
 
-✅ A **Release Version**
-Just tell me!
