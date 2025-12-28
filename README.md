@@ -1,6 +1,6 @@
 # AutoDoc AI Suite
 
-### Developed by **Zeeshan Shaikh — MIT ADT University**
+### Developed by **Zeeshan Shaikh and team — MIT ADT University**
 
 A unified AI-powered suite designed to help developers **understand code**, **visualize logic**, and **interact with documents intelligently**.
 This suite combines **Code Analysis**, **Flowchart Generation**, **Documentation Generation**, and a **full PDF RAG Chatbot** into one cohesive system.
